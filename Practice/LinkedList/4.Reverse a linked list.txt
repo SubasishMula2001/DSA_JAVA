@@ -1,0 +1,19 @@
+ static Node reverseLL(Node head){
+        Node cur = head, prev = null;
+        while(cur!=null){
+            Node temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
+        }
+        return prev; // cause of point new head of linked list
+    }
+    
+    static Node reverseRec(Node head) {
+        if(head == null || head.next == null) return head;
+        Node temp = head.next;
+        Node newHead = reverseRec(head.next);
+        temp.next = head;
+        head.next = null;
+        return newHead;
+    }

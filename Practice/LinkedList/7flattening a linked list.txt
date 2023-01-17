@@ -1,0 +1,62 @@
+ Node flatten(Node root)
+    {
+	// Your code here
+	Node cur = root,
+        last = root;
+	while(cur!=null) {
+	    while(last.next!=null) {
+	        last = last.next;
+	     }
+	    if(cur.bottom!=null) {
+	         last.next = cur.bottom;
+	     }
+	   cur = cur.next;
+      }
+	return root;
+    }
+
+  /// / / // / / / / // // / / / / / 
+class GfG
+{
+    // this is for merge two linked list
+    Node mergeTwoLists(Node a, Node b) {
+        Node temp = new Node(0);
+        Node res = temp;
+        
+        while(a!=null && b!=null) {
+            // if first ll is lesser than or eqal
+            if(a.data <= b.data) {
+               temp.bottom = a;
+               temp = temp.bottom;
+               a = a.bottom;
+            } 
+            // if second ll is lesser than
+            else {
+              temp.bottom  = b;
+              temp = temp.bottom;
+              b = b.bottom;
+            }
+        }
+        // if first ll have some node
+        if(a!=null)
+           temp.bottom = a;
+        // if second ll have some node
+        else 
+           temp.bottom = b;
+    // otherwise point to the dummy res node
+        return res.bottom;
+    }
+    Node flatten(Node root)
+     {
+        	// Your code here
+	if(root==null || root.next==null) return root;
+	
+	// recursion for list on right
+	root.next = flatten(root.next);
+	
+	// Then merge the list
+	root = mergeTwoLists(root,root.next);
+	
+	return root;
+       }
+}

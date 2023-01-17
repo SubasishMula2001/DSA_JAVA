@@ -1,0 +1,24 @@
+    void enqueue(int data) throws Exception {
+        if(isFull()) throw new Exception("QR Full");
+        if(isEmpty()) {
+            front = 0;
+        }
+        rear++;
+        a[rear] = data;
+    }
+    int dequeue()  {
+        if(isEmpty()) System.out.println("Qr is Empty");
+        int ans = a[front];//front is always 0
+        for(int i = 0;i<rear;i++) {
+            a[i] = a[i+1];
+        }
+        rear--;
+        return ans;
+        
+    }
+    boolean isFull() {
+        return rear == n-1;
+    }
+    boolean isEmpty() {
+        return rear == -1;
+    }

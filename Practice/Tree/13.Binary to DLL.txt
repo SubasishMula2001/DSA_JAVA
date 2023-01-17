@@ -1,0 +1,21 @@
+Node head=null;
+   Node prev=null;
+   Node bToDLL(Node root)
+   {
+   bToDLL2(root);
+    return head;
+   }
+   void bToDLL2(Node root) {
+       if(root==null) return;
+    bToDLL2(root.left);
+    if(prev==null) 
+       head=root;
+     else {
+      root.left = prev;
+      prev.right = root;  
+    }
+    prev = root;
+    
+    bToDLL2(root.right);
+   }
+}

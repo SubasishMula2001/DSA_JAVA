@@ -1,0 +1,17 @@
+public static void bfs(int src, boolean vis[]) {
+        Queue<Integer> q = new Queue<>();
+        q.add(src);
+        vis[src] = true;
+        
+    while(!q.isEmpty()) {
+       int cur = q.poll();
+    //   System.out.print(cur+" ");
+      
+    for(Integer neighbour:a.get(cur))   {
+        if(!vis[neighbour]) {
+            q.add(neighbour);
+            vis[nighbour] = true;
+          }
+     }
+      }
+    }

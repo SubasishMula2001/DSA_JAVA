@@ -1,0 +1,54 @@
+ bool checkBST(Node* root, int min , int max) {
+        //base 
+        if(root==NULL) {
+            return true;
+        }
+        
+        if(root->data<min || root->data>max) return false;
+       bool checkRight = checkBST(root->right,root->data+1,max);
+       bool checkLeft = checkBST(root->left,min,root->data+1);
+       return checkRight&&checkLeft;
+    }
+    bool isBST(Node* root) 
+    {
+        // Your code here
+        return checkBST(root,INT_MIN,INT_MAX);
+    }
+
+
+
+2nd app: 
+  //inorder , then compare prev and cur val;
+    void inorder(Node root, ArrayList<Integer> list) {
+        if(root==null) return;
+        inorder(root.left,list);
+        list.add(root.data);
+        inorder(root.right,list);
+    }
+    boolean isBST(Node root)
+    {
+        // code here.
+    ArrayList<Integer> list = new ArrayList<>();
+    inorder(root,list);
+    for(int i = 1;i<list.size();i++) {
+        if(list.get(i-1)>list.get(i)) {
+            return false;
+         }
+      }
+     return true;
+   }
+
+3rd app
+  public boolean isValidBST(TreeNode root) {
+       
+     return isValidBST(root,Long.MIN_VALUE,Long.MAX_VALUE);
+        
+    }
+    boolean isValidBST(TreeNode root, long minValue, long maxValue) {
+       if(root==null) return true;
+        
+        if(root.val <=minValue || root.val>=maxValue) return false;
+        
+        return isValidBST(root.left,minValue,root.val) &&
+            isValidBST(root.right,root.val,maxValue);
+    }

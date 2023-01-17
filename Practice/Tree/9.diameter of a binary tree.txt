@@ -1,0 +1,55 @@
+leetcode
+int height(TreeNode root) {
+        if(root==null) return 0;
+        
+        return Math.max(height(root.left),height(root.right))+1;
+    }
+    int diameter(TreeNode root) {
+         if(root==null) return 0;
+        
+      int option1 = diameter(root.left);
+      int option2 = diameter(root.right);
+      int option3 =1+ height(root.left) + height(root.right);
+        
+      return Math.max(option1,Math.max(option2,option3));
+    }
+    public int diameterOfBinaryTree(TreeNode root) {
+       if(root==null) return 0;
+        return diameter(root)-1;
+    }
+
+gfg
+ int height(Node root) {
+        if(root==null) return 0;
+        return Math.max(height(root.right),height(root.left)) + 1;
+    }
+
+    int diameter(Node root) {
+        // Your code here
+      if(root==null) return 0;
+        int option1 = diameter(root.left);
+        int option2 = diameter(root.right);
+        int option3 = 1+height(root.left)+height(root.right);
+        return Math.max(option1,Math.max(option2,option3));
+    }
+
+
+
+optimise o(N)
+
+public int diameterOfBinaryTree(TreeNode root) {
+        int a[] = new int[1];
+        height(root,a);
+         return ans;
+        } 
+    
+        int ans = 0;
+    int height(TreeNode root,int a[]) {
+        if(root==null) return 0;
+        
+        int lh = height(root.left,a);
+        int rh = height(root.right,a);
+        ans = Math.max(ans,lh+rh);
+        
+        return Math.max(lh,rh) +1;
+    }

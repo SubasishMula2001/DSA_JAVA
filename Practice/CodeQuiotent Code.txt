@@ -1,0 +1,206 @@
+1.add one to each digits of number
+
+import java.util.Scanner;
+// Other imports go here
+// Do NOT change the class name
+class Main{
+    public static void main(String[] args)
+    {
+        // Write your code here
+      Scanner sc = new Scanner(System.in);
+      int t = sc.nextInt();
+      for(int i = 0;i<t;i++){
+        int n = sc.nextInt();
+        int temp,ones = 0 , count = 0;
+        temp = n;
+        while(n>0){
+          n = n/10;
+          count++;
+        }
+        for(int j = count;j>0;j--){
+          ones = 10*ones+1;
+        }
+        System.out.println(ones+temp);
+      }
+    }
+}
+
+2.average people per city
+
+import java.util.Scanner;
+// Other imports go here
+// Do NOT change the class name
+class Main{
+    public static void main(String[] args)
+    {
+        // Write your code here
+      Scanner sc = new Scanner(System.in);
+      int t = sc.nextInt();
+      for(int i = 0;i<t;i++){
+        int n = sc.nextInt();
+        int temp,ones = 0 , count = 0;
+        temp = n;
+        while(n>0){
+          n = n/10;
+          count++;
+        }
+        for(int j = count;j>0;j--){
+          ones = 10*ones+1;
+        }
+        System.out.println(ones+temp);
+      }
+    }
+}
+3.
+Leader in array
+
+class Result{
+  // Return the array that contains leaders
+  static int[] findTheLeaders(int a[], int n){
+    // Write your code here
+    ArrayList<Integer> list = new ArrayList<>();
+    int largest = Integer.MIN_VALUE;
+    for(int i = n-1;i>=0;i--){
+      if(a[i]>largest){
+        largest = a[i];
+        list.add(largest);
+      }
+    }
+   Collections.reverse(list);
+    int arr[] = new int[list.size()];
+    for(int i = 0 ;i<list.size();i++){
+      arr[i] = list.get(i);
+    }
+    return arr;
+  }
+}
+4.min num of sqare tiles
+
+class Result {
+  /*
+   * Return the minimum number of square tiles,
+   * required for covering the m x n rectangular floor
+  */
+static long gcd(int a, int b)
+{
+    return b == 0 ? a : gcd(b, a % b);   
+}
+static long minTiles(int m, int n) {
+  // Complete the given function
+   long  area = m * n;
+  long GCD = gcd(m,n);
+  long ans;
+  long M , N;
+  if(m % GCD == 1){
+    M = m / GCD + 1;
+  }else{
+      M = m / GCD;
+  }
+  if(n % GCD == 1){
+    N = n / GCD + 1;
+  }else{
+    N = n / GCD;
+  }
+  ans = M*N;
+  return ans;
+}
+}
+
+5. city with min people
+
+public static long findMin(int n, int m, int[][] arr) {
+    // Write your code here
+    HashMap<Integer,Integer> m1= new HashMap<>();
+    HashMap<Integer,Integer> m2= new HashMap<>();
+    for(int i=0;i<arr.length;i++){
+      m1.put(arr[i][0],m1.getOrDefault(arr[i][0],0)+arr[i][2]);
+      m2.put(arr[i][1],m2.getOrDefault(arr[i][1],0)+arr[i][2]);
+    }
+    long x=0,min=Integer.MAX_VALUE;
+    for(int i=1;i<=n;i++){
+      if(m1.containsKey(i)){
+        x+=m1.get(i);
+      }
+      min = Math.min(min,x); 
+      if(m2.containsKey(i)){
+        x-=m2.get(i);
+      }
+    }
+    return min;
+  }
+6.fib sequence
+
+static void fib_sequence(int n) {
+  // Write your code here
+  long num1 = 0,num2 = 1;
+  int count = 0;
+  while(count<n){
+    System.out.println(num1);
+    long num3 = num1+num2;
+    num1 = num2;
+    num2 = num3;
+    count = count+1;
+  }
+}
+
+7.
+ missing element
+
+class Result {
+  static int getMissingElement(int[] A, int[] B) {
+    // Write your code here
+    int sum1 = 0,sum2 = 0;
+    for(int i = 0;i<A.length;i++){
+       if(i==A.length-1){
+         sum1+=A[i];
+       }else{
+         sum1+=A[i];
+         sum2+=B[i];
+       }
+    }
+    return sum1-sum2;
+  }
+}
+8.
+left rotate an array
+
+class Result {
+  // Do not print anything in the function
+  // Just modify the given array by left rotating it R times
+  public static void reverse(int arr[],int si, int ei){
+    while(si<ei){
+      int temp = arr[si];
+      arr[si] = arr[ei];
+      arr[ei] = temp;
+      si++;
+      ei--;
+    }
+  }
+  static void rotateArray(int[] arr, int R) {
+    // Write your code here
+    int n = arr.length;
+    reverse(arr,0,n-1);
+    reverse(arr,0,n-R-1);
+    reverse(arr,n-R,n-1);
+  }
+}
+9.
+move the elements
+
+class Result {
+  static void moveElements(int arr[]) {
+    // Write your code here
+    int n = arr.length;
+    for(int i = 1;i<n;i++){
+      int j = i-1;
+      if(arr[i]>=0){
+          while(j>=0 && arr[j]<0){
+        int temp = arr[j+1];
+        arr[j+1] = arr[j];
+        arr[j] = temp;
+        j--;
+      }
+      }
+    }
+  }
+}

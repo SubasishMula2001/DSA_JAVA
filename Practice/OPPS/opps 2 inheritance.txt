@@ -1,0 +1,30 @@
+  class Samsung extends MobilePhone {
+       void playGames() {
+          System.out.println("Samsung playing games"); 
+       }
+    } 
+    class Apple extends MobilePhone {
+    //     void playGames() {
+    //       System.out.println("Apple playing games"); 
+    //   }
+    }
+    class MobilePhone {
+        boolean hasHeadPhoneJack;
+        String os;
+        int price;
+        int dimen;
+        
+      void playGames() {
+          System.out.println("Mobile playing games"); 
+       }
+    }
+    
+public class LearnInheritence {
+    public static void main(String args[]) {
+      Samsung s10 = new Samsung();
+       s10.playGames();
+       
+      Apple a1 = new Apple();
+      a1.playGames();
+    }
+}

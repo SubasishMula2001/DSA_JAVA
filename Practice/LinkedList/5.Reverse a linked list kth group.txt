@@ -1,0 +1,52 @@
+ static Node reverseK(Node head, int k ) {
+             Node cur = head, prevFirst = null,newHead = null;
+             while(cur!= null ) {
+                 int count = 0;
+                 Node prev = null,first = cur;
+               
+                 while(cur!=null && count<k) {
+                     Node temp = cur.next;
+                     cur.next = prev;
+                     prev = cur;
+                     cur = temp;
+                     count++;
+                      //kth node reverse now
+                 }
+                 if(newHead==null) {
+                     newHead = prev;
+                 } else {
+                     //prev window 
+                     prevFirst.next = prev;
+                     //1.next = 6
+                 }
+                 //4 = prevfirst
+                 prevFirst = first;
+             }
+             return newHead;
+         }
+    }
+
+recursion
+        if(head==null) return null;
+        Node cur = head;
+        Node next = null;
+        Node prev = null;
+        int count = 0;
+        
+        //reverse kth node
+        while(cur!=null && count<k) {
+           next = cur.next;
+           cur.next = prev;
+           
+           prev = cur;
+           cur= next;
+           count++;
+        }
+        //recursion
+        if(next!=null){
+           Node rem = reverse(next,k);
+           head.next = rem;  
+        }
+       
+        return prev;
+    }

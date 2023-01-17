@@ -1,0 +1,55 @@
+import java.util.*;
+public class MyClass {
+    static int countDisElementint(int a[]){
+        Set<Integer> set = new HashSet<>();
+        for(int e:a){
+            set.add(e);
+        }
+        System.out.println(set);
+        return set.size();
+    }
+    static void freqOfElements(int a[]){
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i =0;i<a.length;i++){
+            int e = a[i];
+            if(map.containsKey(e)){
+                int temp = map.get(e);
+                map.put(e,temp+1);
+            }else{
+                map.put(e,1);
+            }
+        }
+        System.out.println(map);
+    }
+    static class Pair{
+        int a,b;
+    }
+    static int  pairSum(int a[],int sum){
+        Set<Integer> set = new HashSet<>();
+        for(int e:a){
+            int comp = sum-e;
+            if(set.contains(comp)) return e;
+            set.add(e);
+        }
+        return null;
+    }
+    static boolean zeroSum(int a[]){
+        Set<Integer> set = new HashSet<>();
+        int cs = 0;
+        set.add(0);
+        for(int e:a){
+            cs+= e;
+            if(set.contains(cs)) return true;
+            set.add(cs);
+        }
+        return false;
+    }
+    public static void main(String args[]) {
+         int a[] = {1,1,2,2,5,6,7,5,5};
+//     System.out.println(countDisElementint(a));
+        // freqOfElements(a);
+        // int sum = 5;
+        // System.out.println(pairSum(a,sum));
+        
+    }
+}

@@ -1,0 +1,43 @@
+public class MyClass {
+    static int majorityElement(int a[],int size){
+        int curElem = -1;  //a[0]
+        int count = 0;     //1
+        for(int i = 0;i<size;i++){
+            if(count==0){
+                curElem = a[i];
+                count = 1;
+            }else {
+                if(a[i]==curElem){
+                    count++;
+                }else{
+                    count--;
+                }
+            }
+        }
+        // int finalCount = 0;
+        // for(int e:a){
+        //     if(e==curElem){
+        //         finalCount++;
+        //     }
+        // }
+         int finalCount=0;
+       for(int i=0;i<size;i++)
+       {
+           if(a[i]==curElem)
+           {
+               finalCount++;
+           }
+       }
+        if(finalCount>size/2){
+            return curElem;
+        }else{
+           return -1; 
+        }
+           
+    }
+    public static void main(String args[]) {
+      int a[] = {3,2};
+      int size = a.length;
+      System.out.println(majorityElement(a,size));
+    }
+}

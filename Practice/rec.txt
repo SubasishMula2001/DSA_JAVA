@@ -1,0 +1,127 @@
+import java.util.*;
+public class MyClass {
+    
+    static int sumOfDigits(int n){
+        if(n==0)
+           return 0;
+    int lastDigit = n%10;
+    return lastDigit+sumOfDigits(n/10);
+    }
+    static void generateAllSubsets(String s){
+        Set<String> set = new HashSet<>();
+        GenerateAll(s,0,"",set);
+        for(String st:set){
+            System.out.println(st);
+        }
+        
+    }
+    
+    static void GenerateAll(String s, int i , String cur,Set<String> set){
+        if(i==s.length()){
+            // System.out.println(cur);
+            set.add(cur);
+            return;
+        }
+        GenerateAll(s,i+1,cur,set);
+        GenerateAll(s,i+1,cur+s.charAt(i),set);
+    }
+    public static void towerOfHanoi(int n , char from, char to ,char aux){
+        if(n==0) return ;
+        towerOfHanoi(n-1,from,aux,to);
+        System.out.println("Move "+n+" from "+from+" to "+to);
+        towerOfHanoi(n-1,aux,to,from);
+    }
+         static boolean ratIn(int a[][],boolean vis[][],
+        int i , int j){
+            int n = a.length;
+            //base conditions
+        if(i==n || j==n || a[i][j]==0 || vis[i][j])
+            return false; //
+
+        //base case for successfully reached
+        if(i==n-1 && j==n-1) 
+             return true; // bottom right reached
+        
+        //mark this cell as visted
+        vis[i][j] = true;
+        
+        //check if a path is possible from down
+        if(ratIn(a,vis,i+1,j)) return true;
+        //chek if a path is possible from right
+        if(ratIn(a,vis,i,j+1)) return true;
+        
+        //mark this cell as unvisited & backtrack
+        vis[i][j] = false;
+        //backtrack
+        return false;
+        
+    }
+    
+    public static void main(String args[]) {
+     
+    //  System.out.println(sumOfDigits(2314));
+    // generateAllSubsets("aaa");
+    // towerOfHanoi(3,'A','C','B');
+    int a[][] = {
+        {1,1,0,1},
+        {1,1,1,1},
+        {0,0,1,0},
+        {1,1,1,1}
+    };
+    boolean vis[][] = new boolean[a.length][a.length];
+    boolean isPathPossible = ratIn(a,vis,0,0);
+    System.out.println(isPathPossible);
+    }
+}
+
+
+public class Math {
+    public static boolean palindrome(int n){
+        int rev = 0;
+        int temp = n;
+        while(temp>0){
+            int ld = temp%10;
+            rev = rev*10+ld;
+            temp = temp/10;
+        }
+        return n ==rev;
+    }
+    public static int  gcd(int a ,int b){
+        if(a<b) return gcd(b,a);
+        if(a%b == 0) return b;
+        return gcd(a%b,b);
+    }
+    public static boolean isPrime(int n ){
+        if(n==1) return false;
+        for(int i =2;i<n;i++){
+            if(n%i == 0 ) return false;
+         }
+         return true;
+    }
+    public static boolean isPrimeE(int n ){
+        if(n==1) return false;
+        for(int i =2;i*i<=n;i++){
+            if(n%i == 0 ) return false;
+         }
+         return true;
+    }
+     public static boolean isPrimeEF(int n ){
+        if(n==1) return false;
+        if(n==2 || n==3) return true;
+         if(n%2 == 0 || n%3==0) return false;
+         for(int i = 5;i*i<=n;i+=6){
+             if(n%i == 0 || n%(i+2)==0) return false;
+         }
+    }
+    
+    public static void main(String args[]) {
+     int a = 24;
+     int b = 36;
+    //  Systme.out.println(palindrome(n));
+    //   System.out.println(gcd(a,b));
+    // System.out.println(isPrime(1));
+        System.out.println(isPrimeEF(2));
+
+    
+    }
+}

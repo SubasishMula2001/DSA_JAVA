@@ -1,0 +1,48 @@
+	
+gfg
+
+Node lca(Node root, int n1,int n2)
+	{
+		// Your code here
+      if(root==null) return null;
+        if(root.data==n1 || root.data==n2) return root;
+        Node left = lca(root.left,n1,n2);
+         Node right = lca(root.right,n1,n2);
+  
+        if(right==null) return left;
+        if(left==null) return right;
+        return root;
+    }
+
+leetcode
+
+
+ public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+      if(root==null) return null;
+        if(root.val==p.val || root.val==q.val) return root;
+        TreeNode left = lowestCommonAncestor(root.left,p,q);
+         TreeNode right = lowestCommonAncestor(root.right,p,q);
+  
+        if(right==null) return left;
+        if(left==null) return right;
+        return root;
+    }
+
+///
+
+ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root==NULL) 
+            return NULL;
+        if(root==p || root==q)
+            return root;
+        else {
+           TreeNode* leftAns =  lowestCommonAncestor(root->left,p,q);
+           TreeNode* rightAns = lowestCommonAncestor(root->right,p,q);
+            
+         if(leftAns!=NULL && rightAns !=NULL)
+              return root;
+          else if(leftAns==NULL)
+              return rightAns;
+          else 
+              return leftAns;
+        }

@@ -1,0 +1,11 @@
+boolean search(Node root, int x) {
+        // Your code here
+        if(root==null) return false;
+        // System.out.println(root.data);
+        if(root.data==x) return true;
+        if(x>root.data) {
+           return search(root.right,x);
+        }
+        return search(root.left,x);
+    
+    }

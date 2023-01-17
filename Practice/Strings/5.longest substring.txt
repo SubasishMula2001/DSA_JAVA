@@ -1,0 +1,29 @@
+import java.util.*;
+public class MyClass {
+    static int longestSubstrDistinctChars(char[] s){
+       int i = 0,j = 0;
+       int index[] = new int[256];
+       Arrays.fill(index,-1);
+      int ans = 0;
+      while(j<s.length){
+          int lastPos = index[s[j]];
+          boolean isPresent = true;//window ke andar hai ya nhi
+          if(lastPos < i){
+              isPresent = false;
+          }
+         if(isPresent){
+             i = lastPos + 1;
+         }
+         int curWindowSize = j -i+1;
+         ans  = Math.max(ans,curWindowSize);
+         index[s[j]] = j;
+         j++;
+         }
+      return ans;
+       }
+     
+    public static void main(String args[]) {
+      String s = "abcdcapbbbc";
+      System.out.println(longestSubstrDistinctChars(s.toCharArray()));
+    }
+}

@@ -1,0 +1,49 @@
+
+class Secret {
+   private int data;
+   
+   public void setData(int data) {
+       if(data>100) {
+           this.data = data; 
+       } else {
+           System.out.println("You are not allowed");
+       }
+   }
+   public int getData() {
+       return data;
+   }
+}
+
+public class MyClass {
+    public static void main(String args[]) {
+     Secret obj = new Secret();
+    //  obj.data = 4;
+     obj.setData(103);
+     
+     System.out.println(obj.getData());
+    }
+}
+
+//2nd example
+
+public class MyClass {
+    public static void main(String args[]) {
+     BankAccount obj = new BankAccount();
+    //  obj.amount = 4;
+    obj.setAmount(1234,100);
+    System.out.println(obj.getAmount());
+    }
+}
+class BankAccount {
+    int otp=1234;
+    private int amount;
+    
+    public int getAmount() {
+        return amount;
+    }
+    public void setAmount(int otp, int amount ) {
+        if(otp == this.otp) {
+            this.amount = amount;
+        }
+    }
+}

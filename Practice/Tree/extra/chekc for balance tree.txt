@@ -1,0 +1,15 @@
+boolean flag = true;
+    boolean isBalanced(Node root)
+    {
+	// Your code here
+    	height(root);
+     	return flag;
+    }
+    private int height(Node root) {
+        if(root==null) return 0;
+        int l = height(root.left);
+        int r = height(root.right);
+        if(Math.abs(l-r)>1) 
+        flag = false;
+        return 1+Math.max(l,r);
+    }

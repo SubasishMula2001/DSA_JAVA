@@ -1,0 +1,29 @@
+class Solution
+{
+    int getMiddle(Node head)
+    {
+         // Your code here.
+        //  Node cur  = head;
+        //  int count = 0;
+        //  while(cur!=null){
+        //      count++;
+        //      cur = cur.next;
+        //   }
+        //   cur = head;
+        //   for(int i = 0;i<count/2;i++){
+        //       cur = cur.next;
+              
+        //   }
+        //   return cur.data;
+         
+         
+         
+         Node slow = head;
+         Node fast = head;
+         while(fast!=null && fast.next!=null){
+             slow = slow.next;
+             fast = fast.next.next;
+         }
+         return slow.data;
+    }
+}

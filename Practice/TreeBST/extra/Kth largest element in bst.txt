@@ -1,0 +1,23 @@
+  int count =0;
+    int ans =0;
+    public void solve(Node root,int k){
+        if(root==null)return;
+        
+        //traverse right subtree
+        solve(root.right,k);
+        //traverse the root node
+        count++;
+        if(count==k){
+            ans = root.data;
+            return;
+        }
+        //traverse left subtree
+        solve(root.left,k);
+    }
+    public int kthLargest(Node root,int K)
+    {
+        //inorder traverse gives a sorted array 
+        //we a can also get reverse sorted array by reverse inorder
+        solve(root,K);
+        return ans;
+    }

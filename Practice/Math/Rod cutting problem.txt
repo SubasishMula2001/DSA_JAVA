@@ -1,0 +1,19 @@
+public class MyClass {
+    static int maxRods(int n,int a,int b ,int c){
+        if(n==0 )return 0;
+        if(n<0) return -1;
+        int cutA = maxRods(n-a,a,b,c);
+        int cutB = maxRods(n-b,a,b,c);
+        int cutC = maxRods(n-c,a,b,c);
+        return Math.max(cutA,Math.max(cutB,cutC))+1;
+    }
+    
+    public static void main(String args[]) {
+      int n = 25;
+      
+      int a = 6;
+      int b = 7;
+      int c = 13;
+      System.out.println(maxRods(n,a,b,c));
+    }
+}

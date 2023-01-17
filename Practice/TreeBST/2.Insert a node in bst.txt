@@ -1,0 +1,32 @@
+ public TreeNode insertIntoBST(TreeNode root, int Key) {
+     TreeNode parent = null , cur = root;
+        
+        while(cur!=null) {
+         if(Key>cur.val)  {
+             parent = cur;
+             cur = cur.right;
+         }else if(Key<cur.val) {
+             parent = cur;
+             cur = cur.left;
+          }
+        }
+        TreeNode newNode = new TreeNode(Key);
+        if(parent==null)  return newNode;
+        if(Key>parent.val) 
+            parent.right = newNode;
+        else if(Key<parent.val) {
+            parent.left = newNode;
+        }
+        return root;
+    }
+
+2nd app
+ 
+        if(root==null) return new TreeNode(Key);
+        
+        if(Key>root.val) {
+            root.right = insertIntoBST(root.right,Key);
+        } else if(Key<root.val) {
+            root.left = insertIntoBST(root.left,Key);
+        }
+        return root;
